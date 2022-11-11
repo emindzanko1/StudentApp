@@ -47,9 +47,6 @@ hr{
 .slika{
   padding-top: 5px;
 }
-/*.tooltip {
-  position: fixed;
-}*/
 h2,h3{
   color: black;
   text-align: center;
@@ -57,38 +54,28 @@ h2,h3{
 body{
   background-color: #D6E4E5;
 }
-/*html{
-  scroll-behavior: smooth;
-}*/
-.tooltip {
-  padding-left: 300px;
-  margin-right: 10px;
+.meni {
   overflow: hidden;
-  position: sticky; /* Set the navbar to fixed position */
-  top: 0; /* Position the navbar at the top of the page */
-  width: 100%; /* Full width */
+  position: sticky;
+  top: 0;
+  width: auto;
 }
-#ri{
-   margin-top: 67px
+.nesto{
+  position: fixed;
+	font-family: Arial, sans-serif;
+	color: #FFFFFF;
+	background-color: #000000;
+	font-size: 11px;
+	width: 100%;
+	opacity: 0.8;
+	z-index: 50;
+	bottom: 0px;
+	left: 0px;
 }
-
-/* Links inside the navbar */
-/*.tooltip a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-/* Change background on mouse-over */
-/*.tooltip a:hover {
-  background: #ddd;
-  color: black;
+#ri, #aie, #tk, #ee, #rirs_1, #rirs_2, #ribsc_1, #ribsc_2, #ribsc_3, #rimsc_1, #rimsc_2, #aiebsc_1, #aiebsc_2, #aiebsc_3, #aiemsc_1, #aiemsc_2, #tkbsc_1, #tkbsc_2, #tkbsc_3,  #eebsc_1, #eebsc_2, #eebsc_3, #eemsc_1, #eemsc_2{
+  padding-top: 70px;
 }
 
-/* Main content */
-/*.main {
-  margin-top: 30px; /* Add a top margin to avoid content overlay */
-/*}*/
+#tkmsc_1, #tkmsc_2{
+  padding-top: 120px;
+}
