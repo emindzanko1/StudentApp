@@ -1,0 +1,94 @@
+.rs_1, .rs_2, .bsc_1, .bsc_2 , .bsc_3, .msc_1, .msc_2{
+  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 200px));
+  gap: 10px;
+  background-color: #2196F3;
+  text-align: center;
+  padding-top: 10px;
+  padding-left: 3px;
+  padding-bottom: 10px;
+  word-wrap: break-word;
+}
+.redovni {
+  background-color: white;
+  border: 1px solid black;
+  text-align: center;
+  font-size: 20px;
+}
+.izborni{
+  background-color: powderblue;
+  border: 1px solid black;
+  text-align: center;
+  font-size: 20px;
+}
+.neide{
+  background-color: grey;
+  border: 1px solid black;
+  text-align: center;
+  font-size: 20px;
+}
+.rs, .bsc, .msc{
+  display: inline-block;
+  padding-left: 10px;
+}
+.ri, .aie, .tk, .ee{
+   width: auto;
+   float:left;
+   height:100px;
+   margin:10px;
+}
+.ullista{
+  list-style-type: none;
+}
+hr{
+  clear: both;
+}
+.slika{
+  padding-top: 5px;
+}
+/*.tooltip {
+  position: fixed;
+}*/
+h2,h3{
+  color: black;
+  text-align: center;
+}
+body{
+  background-color: #D6E4E5;
+}
+/*html{
+  scroll-behavior: smooth;
+}*/
+.tooltip {
+  padding-left: 300px;
+  margin-right: 10px;
+  overflow: hidden;
+  position: sticky; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+}
+#ri{
+   margin-top: 67px
+}
+
+/* Links inside the navbar */
+/*.tooltip a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change background on mouse-over */
+/*.tooltip a:hover {
+  background: #ddd;
+  color: black;
+}
+
+/* Main content */
+/*.main {
+  margin-top: 30px; /* Add a top margin to avoid content overlay */
+/*}*/

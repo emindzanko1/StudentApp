@@ -1,0 +1,30 @@
+.tabela{
+  border: 1px solid black;
+  border-collapse: collapse;
+  height: 100%;
+  width: 60%;
+  valign:top;
+  margin-left: auto;
+  margin-right: auto;
+}
+.zelena{
+  background-color: #9CFF2E;
+  color: #9CFF2E;
+}
+.crvena{
+  background-color: #E0144C;
+  color: #E0144C;
+}
+.prvired{
+  vertical-align: top;
+  text-align: left;
+  background-color: #A2B5BB;
+}
+.ostali{
+  vertical-align: top;
+  text-align: left;
+  background-color: #F5EDDC;
+}
+h1,h2{
+  text-align: center;
+}
