@@ -1,30 +1,34 @@
-.tabela{
+.tabela {
   border: 1px solid black;
   border-collapse: collapse;
   height: 100%;
   width: 60%;
-  valign:top;
   margin-left: auto;
   margin-right: auto;
 }
-.zelena{
+
+.zelena {
   background-color: #9CFF2E;
   color: #9CFF2E;
 }
-.crvena{
+
+.crvena {
   background-color: #E0144C;
   color: #E0144C;
 }
-.prvired{
+
+.prvired {
   vertical-align: top;
   text-align: left;
   background-color: #A2B5BB;
 }
-.ostali{
+
+.ostali {
   vertical-align: top;
-  text-align: left; 
+  text-align: left;
   background-color: #F5EDDC;
 }
-h1,h2{
+
+h1, h2 {
   text-align: center;
 }
