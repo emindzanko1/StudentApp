@@ -1,0 +1,80 @@
+.rs_1, .rs_2, .bsc_1, .bsc_2, .bsc_3, .msc_1, .msc_2 {
+  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 200px));
+  gap: 10px;
+  background-color: #2196F3;
+  text-align: center;
+  padding-top: 10px;
+  padding-left: 3px;
+  padding-bottom: 10px;
+  word-wrap: break-word;
+}
+
+.redovni {
+  background-color: white;
+  border: 1px solid black;
+  text-align: center;
+  font-size: 20px;
+}
+
+.izborni {
+  background-color: powderblue;
+  border: 1px solid black;
+  text-align: center;
+  font-size: 20px;
+}
+
+.neide {
+  background-color: grey;
+  border: 1px solid black;
+  text-align: center;
+  font-size: 20px;
+}
+
+.rs, .bsc, .msc {
+  padding-left: 20px;
+}
+
+.ri, .aie, .tk, .ee {
+  width: auto;
+  float: left;
+  height: 100px;
+  margin: 10px;
+}
+
+.ullista {
+  list-style-type: none;
+}
+
+hr {
+  clear: both;
+}
+
+.slika {
+  padding-top: 5px;
+}
+
+h2, h3 {
+  color: black;
+  text-align: center;
+}
+
+body {
+  background-color: #D6E4E5;
+}
+
+.meni {
+  overflow: hidden;
+  position: sticky;
+  top: 0;
+  width: auto;
+}
+
+#ri, #aie, #tk, #ee, #rirs_1, #rirs_2, #ribsc_1, #ribsc_2, #ribsc_3, #rimsc_1, #rimsc_2, #aiebsc_1, #aiebsc_2, #aiebsc_3, #aiemsc_1, #aiemsc_2, #tkbsc_1, #tkbsc_2, #tkbsc_3, #eebsc_1, #eebsc_2, #eebsc_3, #eemsc_1, #eemsc_2 {
+  padding-top: 70px;
+}
+
+#tkmsc_1, #tkmsc_2 {
+  padding-top: 120px;
+}
