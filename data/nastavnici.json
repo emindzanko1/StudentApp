@@ -1,21 +1,22 @@
 [{
     "nastavnik": {
-      "username": "USERNAME",
-      "password_hash": "PASSWORDHASH"
+      "username": "Emin",
+      "password_hash": "emin1"
     },
     "predmeti": [
-      "PREDMET1",
-      "PREDMET2",
-      "PREDMET3"
+      "Razvoj mobilnih aplikacija",
+      "Diskretna matematika",
+      "Web tehnologije"
     ]
   },
   {
     "nastavnik": {
-      "username": "USERNAME2",
-      "password_hash": "PASSWORDHASH2"
+      "username": "Lea",
+      "password_hash": "lea1"
     },
     "predmeti": [
-      "PREDMET1"
+      "Osnove operacionih istrazivanja",
+      "Poslovni web sistemi"
     ]
   },
   {
@@ -24,9 +25,8 @@
         "password_hash": "1"
       },
       "predmeti": [
-        "PREDMET1",
-        "PREDMET2",
-        "PREDMET3"
+        "Razvoj programskih rjesenja",
+        "Osnove informacionih sistema"
       ]
     }
 ]

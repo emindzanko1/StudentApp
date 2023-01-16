@@ -32,8 +32,6 @@ app.get('/', function(req, res){
 });
 
 app.get('/predmeti', function(req, res){
-
-
    //
    let loggedIn = false;
 
