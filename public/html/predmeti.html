@@ -4,16 +4,17 @@
     <meta charset="utf-8">
     <title>Predmeti</title>
   </head>
-  <body>
-    <h1>Dobro dosli na Predmete</h1>
+  <body onload="predmetiInit()">
+    <button id="logoutdugme" onclick="postLogOut()">Log out</button>
+    <h1>Dobrodosli na Predmete</h1>
 
-    <div class="news">
-    <a href="#">NASA’s Webb Delivers Deepest Infrared Image of Universe Yet</a>
-    <menu>
-        <li><button id="save">Save for later</button></li>
-        <li><button id="share">Share this news</button></li>
+    <menu id="meni">
+
     </menu>
 </div>
+<script src="./scripts/poziv.js"></script>
+<script src="./scripts/poziviAjax.js" type="text/javascript" ></script>
+
 
   </body>
 </html>

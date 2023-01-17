@@ -22,6 +22,11 @@ app.use(express.static(path.join(__dirname, '/public/css')));
 app.use(express.static(path.join(__dirname, '/public/images')));
 app.use(express.static(path.join(__dirname, '/public/scripts')));
 
+app.get('/isloggedin', function(req, res){
+  console.log("trigerovao backend");
+  if (req.session.loggedIn==true) {  res.send(req.session.loggedIn); }
+  else res.send(false);
+} );
 
 app.get('/', function(req, res){
   res.sendFile(path.join(__dirname + '/public/html/prijava.html'));
@@ -78,7 +83,7 @@ app.post('/login', function(req, res){
     req.session.predmeti = predmeti;
 
     //console.log("poruka:Uspjesna prijava");
-    res.json({poruka:"Uspjesna prijava",url:"/predmeti"});
+    res.json({poruka:"Uspjesna prijava",url:"/predmeti.html"});
   }
   else {
     //res.send({"poruka":"Neuspjesna prijava"});
@@ -110,12 +115,22 @@ app.get('/predmeti', function(req, res){
 
 });
 
-app.get('/logout', function(req, res){
-  delete req.session.username;
-  delete req.session.predmeti;
-  req.session.loggedIn = false;
-  res.sendFile(path.join(__dirname + '/public/html/prijava.html'));
+app.post('/logout', function(req, res){
+
+    delete req.session.username;
+    delete req.session.predmeti;
+    req.session.loggedIn = false;
+    res.json({poruka:"Korisnik je izlogovan",url:"/prijava.html"});
+
 });
+
+app.get('/predmet/:naziv', function(req, res) {
+   let prisustva = require('./data/prisustva.json');
+
+
+
+});
+
 
 app.listen(port, function() {
   console.log("Listening on " + port);
