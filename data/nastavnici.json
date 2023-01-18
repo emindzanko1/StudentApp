@@ -1,18 +1,17 @@
 [{
     "nastavnik": {
-      "username": "Emin",
-      "password_hash": "emin1"
+      "username": "Meho Mehic",
+      "password_hash": "meho1"
     },
     "predmeti": [
-      "Razvoj mobilnih aplikacija",
-      "Diskretna matematika",
-      "Web tehnologije"
+      "Algoritmi i strukture podataka",
+      "Diskretna matematika"
     ]
   },
   {
     "nastavnik": {
-      "username": "Lea",
-      "password_hash": "lea1"
+      "username": "Hamo Hamic",
+      "password_hash": "hamo1"
     },
     "predmeti": [
       "Osnove operacionih istrazivanja",
@@ -26,7 +25,7 @@
       },
       "predmeti": [
         "Razvoj programskih rjesenja",
-        "Osnove informacionih sistema"
+        "Web tehnologije"
       ]
     }
 ]

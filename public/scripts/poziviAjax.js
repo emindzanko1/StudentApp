@@ -44,7 +44,16 @@ const PoziviAjax = (() => {
       ajax.send();
   }
 
-  function impl_getPredmet(naziv, fnCallback) {}
+  function impl_getPredmet(naziv, fnCallback) {
+    var ajax = new XMLHttpRequest();
+    ajax.onreadystatechange = function() {
+      if (ajax.readyState == 4) {
+        fnCallback(getError(ajax.status), ajax.responseText);
+      } }
+
+    ajax.open("GET", "/predmet/"+naziv, true);
+    ajax.send();
+  }
   // vraća listu predmeta za loginovanog nastavnika ili grešku da nastavnik nije loginovan
 
   function impl_getPredmeti(fnCallback) {
@@ -94,7 +103,22 @@ const PoziviAjax = (() => {
   }
 
   //prisustvo ima oblik {sedmica:N,predavanja:P,vjezbe:V}
-  function impl_postPrisustvo(naziv, index, prisustvo, fnCallback) {}
+  function impl_postPrisustvo(naziv, index, prisustvo, fnCallback) {
+
+    var ajax = new XMLHttpRequest();
+    ajax.onreadystatechange = function() {
+      if (ajax.readyState == 4) {
+        fnCallback(getError(ajax.status), ajax.responseText);
+      } }
+
+    ajax.open("POST", "/prisustvo/predmet/"+naziv+"/student/"+index, true);
+    ajax.setRequestHeader("Content-type", "application/json");
+    ajax.send(JSON.stringify({
+      sedmica: prisustvo.sedmica,
+      predavanja: prisustvo.predavanja,
+      vjezbe: prisustvo.vjezbe
+    }));
+  }
   return {
     postLogin: impl_postLogin,
     postLogout: impl_postLogout,

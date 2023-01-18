@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname, '/public/images')));
 app.use(express.static(path.join(__dirname, '/public/scripts')));
 
 app.get('/isloggedin', function(req, res){
-  console.log("trigerovao backend");
+
   if (req.session.loggedIn==true) {  res.send(req.session.loggedIn); }
   else res.send(false);
 } );
@@ -58,7 +58,6 @@ app.get('/predmeti', function(req, res){
 
 app.post('/login', function(req, res){
 
-  console.log(req.body);
   let jsonData = require('./data/nastavnici.json');
 
   let username = req.body.username;
@@ -125,12 +124,44 @@ app.post('/logout', function(req, res){
 });
 
 app.get('/predmet/:naziv', function(req, res) {
-   let prisustva = require('./data/prisustva.json');
+  let naziv = req.params.naziv;
 
+  let prisustva = require('./data/prisustva.json');
 
+  for (predmet of prisustva){
+    if(predmet.predmet.toString() == naziv) {
+      res.json(predmet);
+    }
+  }
 
 });
 
+app.post('/prisustvo/predmet/:naziv/student/:index', function (req, res){
+  let naziv = req.params.naziv;
+  let index = req.params.index;
+
+  let sedmica = parseInt(req.body.sedmica);
+  let predavanja = parseInt(req.body.predavanja);
+  let vjezbe = parseInt(req.body.vjezbe);
+
+  let prisustva = require('./data/prisustva.json');
+  for (predmet of prisustva){
+    if(predmet.predmet.toString() == naziv) {
+      for (prisustvo of predmet.prisustva) {
+
+        if (parseInt(prisustvo.sedmica) == sedmica && prisustvo.index.toString() == index){
+          console.log(prisustvo);
+          prisustvo.predavanja = predavanja;
+          prisustvo.vjezbe = vjezbe;
+          res.json(predmet);
+        }
+      }
+    }
+  }
+
+
+
+})
 
 app.listen(port, function() {
   console.log("Listening on " + port);
