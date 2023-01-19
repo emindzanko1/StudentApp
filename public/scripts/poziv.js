@@ -40,15 +40,16 @@ function predmeti(error, data) {
 
 function predmet(error, data) {
   if (error == null) {
-    //createTable(JSON.parse(data));
+    //generateTable(JSON.parse(data));
     //console.log(JSON.parse(data));
-    generateTable(JSON.parse(data));
+    createTable(JSON.parse(data));
   }
 }
 
-function izmijeniprisustvo(error, data) {
+function izmijeniPrisustvo(error, data) {
   if (error == null) {
-    generateTable(JSON.parse(data));
+    console.log(JSON.parse(data));
+    createTable(JSON.parse(data));
   }
 }
 
@@ -67,6 +68,10 @@ function predmetiInit() {
   getPredmeti();
   getLoggedIn();
 }
+
+/*bcrypt.hash(plaintextPassword, 10, function(err, hash) {
+// hash šifre imate ovdje
+});*/
 
 let numerals = {
   M: 1000,
@@ -112,7 +117,7 @@ let calculatePercentage = function(prisustvo, prisustva) {
 
   var procenat = (brojPredavanjaSedmicno + brojVjezbiSedmicno) / (prisustva.brojPredavanjaSedmicno + prisustva.brojVjezbiSedmicno) * 100;
 
-  return Math.round(procenat*100)/100;
+  return Math.round(procenat * 100) / 100;
 
 }
 
@@ -143,19 +148,57 @@ let colorTheTileVjezbe = function(brojPrisustva, prisustva, k) {
   }
 }
 
-let generateTable = function(prisustva) {
+let createTable = function(prisustva) {
   // creates a <table> element and a <tbody> element
+
   let element = document.getElementById("tabela");
   if (element) {
     element.remove();
   }
   //console.log(prisustva.prisustva);
 
-  const tbl = document.createElement("table");
-  tbl.id = "tabela";
+  const table = document.createElement("table");
+  table.id = "tabela";
+
+  table.style.border = "1px solid black";
+  table.style.border.collapse = "collapse";
+  table.style.height = "100%";
+  table.style.width = "60%";
+  table.style.margin.left = "auto";
+  table.style.margin.right = "auto";
+  table.style.wordwrap = "break-word";
+  table.style.background = "#F5EDDC";
+
   const tblBody = document.createElement("tbody");
 
   var brojsedmica = prisustva.prisustva.length / prisustva.studenti.length;
+  var tr = document.createElement('tr');
+
+  for (var j = 0; j < brojsedmica + 3; j++) {
+    var headerCell = document.createElement("th");
+    headerCell.style.background = "#A2B5BB";
+    switch (j) {
+      case 0:
+        headerCell.innerHTML = "Ime i prezime";
+        tr.appendChild(headerCell);
+        break;
+      case 1:
+        headerCell.innerHTML = "Index";
+        tr.appendChild(headerCell);
+        break;
+      case brojsedmica + 2:
+        headerCell.innerHTML = convertToRoman(j - 1) + "-" + convertToRoman(15);
+        tr.appendChild(headerCell);
+        break;
+      default:
+        headerCell.innerHTML = convertToRoman(j - 1);
+        tr.appendChild(headerCell);
+        break;
+    }
+  }
+
+  table.appendChild(tr);
+
   for (let i = 0; i < prisustva.studenti.length; i++) {
     const row = document.createElement("tr");
 
@@ -186,12 +229,10 @@ let generateTable = function(prisustva) {
                 } else {
                   inner_cell.innerHTML = "V" + (k - prisustva.brojPredavanjaSedmicno + 1);
 
-
-
                 }
               } else {
                 if (k < prisustva.brojPredavanjaSedmicno) {
-                  if (colorTheTilePredavanja(prisustva, prisustva.prisustva[i+30].predavanja, k)) {
+                  if (colorTheTilePredavanja(prisustva, prisustva.prisustva[i + 30].predavanja, k)) {
                     inner_cell.style.background = "#9CFF2E";
                     boja = "zelena";
                     inner_cell.tip = "predavanja";
@@ -202,7 +243,7 @@ let generateTable = function(prisustva) {
                     inner_cell.tip = "predavanja";
                   }
                 } else {
-                  if (colorTheTileVjezbe(prisustva.prisustva[i+30].vjezbe, prisustva, k)) {
+                  if (colorTheTileVjezbe(prisustva.prisustva[i + 30].vjezbe, prisustva, k)) {
                     inner_cell.style.background = "#9CFF2E";
                     boja = "zelena";
                     inner_cell.tip = "vjezbe";
@@ -268,14 +309,14 @@ let generateTable = function(prisustva) {
   }
 
   // put the <tbody> in the <table>
-  tbl.appendChild(tblBody);
+  table.appendChild(tblBody);
   // appends <table> into <body>
-  document.body.appendChild(tbl);
+  document.body.appendChild(table);
   // sets the border attribute of tbl to '2'
-  tbl.setAttribute("border", "2");
+  table.setAttribute("border", "2");
 }
 
-let createTable = function(prisustva) {
+let generateTable = function(prisustva) {
   let element = document.getElementById("tabela");
   if (element) {
     element.remove();
@@ -346,7 +387,7 @@ let createTable = function(prisustva) {
               var inner_td = document.createElement('td');
               inner_td.style.width = "23%";
               inner_td.onclick = function() {
-                console.log(prisustva.predmet, index, j, predavanja, vjezbe);
+                //console.log(prisustva.predmet, index, j, predavanja, vjezbe); zakom 15:54
                 //postPrisustvo(prisustva.predmet, prisustva.studenti[i].index, {sedmica: j, predavanja: prisustva.prisustva[i + 2].predavanja, vjezbe: prisustva.prisustva[i + 2].vjezbe});
               }
               if (l == 0) {
@@ -417,5 +458,5 @@ function getPredmet(naziv) {
 }
 
 function postPrisustvo(naziv, index, prisustvo) {
-  PoziviAjax.postPrisustvo(naziv, index, prisustvo, izmijeniprisustvo);
+  PoziviAjax.postPrisustvo(naziv, index, prisustvo, izmijeniPrisustvo);
 }

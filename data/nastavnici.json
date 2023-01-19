@@ -14,18 +14,8 @@
       "password_hash": "hamo1"
     },
     "predmeti": [
-      "Osnove operacionih istrazivanja",
-      "Poslovni web sistemi"
+      "Razvoj programskih rjesenja",
+      "Web tehnologije"
     ]
-  },
-  {
-      "nastavnik": {
-        "username": "1",
-        "password_hash": "1"
-      },
-      "predmeti": [
-        "Razvoj programskih rjesenja",
-        "Web tehnologije"
-      ]
-    }
+  }
 ]
