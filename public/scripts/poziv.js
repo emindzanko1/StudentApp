@@ -69,10 +69,6 @@ function predmetiInit() {
   getLoggedIn();
 }
 
-/*bcrypt.hash(plaintextPassword, 10, function(err, hash) {
-// hash šifre imate ovdje
-});*/
-
 let numerals = {
   M: 1000,
   CM: 900,

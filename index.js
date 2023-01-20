@@ -4,6 +4,7 @@ const fs = require('fs');
 const session = require('express-session');
 const path = require('path');
 const app = express();
+const bcrypt = require('bcrypt');
 var port = process.env.PORT || 3000;
 
 //app.use(express.json());
@@ -62,40 +63,76 @@ app.get('/predmeti', function(req, res) {
 
 app.post('/login', function(req, res) {
 
-  let jsonData = require('./data/nastavnici.json');
+  bcrypt.hash(req.body.password, 10, function(err, hash) {
 
-  let username = req.body.username;
-  let password = req.body.password;
+    let jsonData = require('./data/nastavnici.json');
 
-  let predmeti = {};
+    let username = req.body.username;
+    let password = req.body.password;
 
-  let prijava = false;
 
-  if (username && password) {
-    for (i = 0; i < jsonData.length; i++) {
-      if (jsonData[i].nastavnik.username == username && jsonData[i].nastavnik.password_hash == password) {
-        prijava = true;
-        predmeti = jsonData[i].predmeti;
+    let predmeti = {};
+
+    let prijava = false;
+
+    let i = 0;
+
+    if (username && password) {
+      //for (i = 0; i < jsonData.length; i++) {
+
+      while (i != jsonData.length) {
+
+        if (jsonData[i].nastavnik.username == username) {
+          prijava = true;
+          let l = i;
+          bcrypt.compare(password, jsonData[l].nastavnik.password_hash, function(err, result) {
+            if (result) {
+              predmeti = jsonData[l].predmeti;
+              req.session.loggedIn = true;
+              req.session.username = username;
+              req.session.predmeti = predmeti;
+
+              //console.log("poruka:Uspjesna prijava");
+              res.json({
+                poruka: "Uspjesna prijava",
+                url: "/predmeti.html"
+              });
+            } else {
+
+              console.log("poruka:Neuspjesna prijava")
+
+              //res.send({"poruka":"Neuspjesna prijava"});
+              //res.redirect('/');
+            }
+
+          });
+        }
+        i++;
       }
     }
-  }
 
-  if (prijava) {
-    req.session.loggedIn = true;
-    req.session.username = username;
-    req.session.predmeti = predmeti;
+    if (!prijava)
+      console.log("poruka:Neuspjesna prijava")
 
-    //console.log("poruka:Uspjesna prijava");
-    res.json({
-      poruka: "Uspjesna prijava",
-      url: "/predmeti.html"
-    });
-  } else {
-    //res.send({"poruka":"Neuspjesna prijava"});
-    //res.redirect('/');
-    console.log("poruka:Neuspjesna prijava")
 
-  }
+    /*if (prijava) {
+      predmeti = jsonData[i].predmeti;
+      req.session.loggedIn = true;
+      req.session.username = username;
+      req.session.predmeti = predmeti;
+
+      //console.log("poruka:Uspjesna prijava");
+      res.json({
+        poruka: "Uspjesna prijava",
+        url: "/predmeti.html"
+      });
+    } else {
+      //res.send({"poruka":"Neuspjesna prijava"});
+      //res.redirect('/');
+      console.log("poruka:Neuspjesna prijava")
+
+    }*/
+  });
 });
 
 app.get('/predmeti', function(req, res) {

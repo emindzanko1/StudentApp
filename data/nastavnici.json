@@ -1,7 +1,7 @@
 [{
     "nastavnik": {
       "username": "Meho Mehic",
-      "password_hash": "meho1"
+      "password_hash": "$2a$10$mvWcXpYZud/5rpGX5WYmDuMbkWwuhbyJPos6cYsWos6vL3NG5PCJm"
     },
     "predmeti": [
       "Algoritmi i strukture podataka",
@@ -11,7 +11,7 @@
   {
     "nastavnik": {
       "username": "Hamo Hamic",
-      "password_hash": "hamo1"
+      "password_hash": "$2a$10$Z6wJlD4YBcORMD5ABggyKefGGTTCnYQ.AlWO5eV2TzWMvMJLmm1HK"
     },
     "predmeti": [
       "Razvoj programskih rjesenja",
