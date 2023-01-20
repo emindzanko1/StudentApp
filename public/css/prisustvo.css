@@ -1,0 +1,55 @@
+table {
+  border: 1px solid black;
+  border-collapse: collapse;
+  height: 100%;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  word-wrap: break-word;
+}
+
+tr, th {
+  border: 1px solid black;
+}
+
+.zelena {
+  background-color: #9CFF2E;
+  color: #9CFF2E;
+}
+
+.crvena {
+  background-color: #E0144C;
+  color: #E0144C;
+}
+
+.prvired {
+  border: 1px solid black;
+  border-collapse: collapse;
+  vertical-align: top;
+  text-align: left;
+  background-color: #A2B5BB;
+}
+
+.ostali {
+  border: 1px solid black;
+  border-collapse: collapse;
+  vertical-align: top;
+  text-align: left;
+  background-color: #F5EDDC;
+}
+
+.kraj {
+  background-color: black;
+}
+
+.prva {
+  width: 25%;
+}
+
+.druga {
+  width: 50%;
+}
+
+h1, h2 {
+  text-align: center;
+}
