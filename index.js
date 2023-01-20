@@ -1282,27 +1282,6 @@ app.get('/', function(req, res) {
   //console.log(__dirname);
 });
 
-app.get('/predmeti', function(req, res) {
-  //
-  let loggedIn = false;
-
-  if (req.session.loggedIn == true) {
-    loggedIn = true;
-  }
-
-  if (loggedIn) {
-    res.send(req.session.predmeti);
-    //res.sendFile(path.join(__dirname, '/public/html/predmeti.html'));
-    // res.send();
-
-  } else {
-    res.send({
-      "greska": "Nastavnik nije loginovan"
-    });
-  }
-
-});
-
 app.post('/login', async (req, res) => {
 
   let username = req.body.username;
@@ -1371,7 +1350,6 @@ app.post('/login', async (req, res) => {
 
   if (!prijava)
     console.log("poruka:Neuspjesna prijava")
-
 
 });
 
