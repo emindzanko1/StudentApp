@@ -232,47 +232,54 @@ let createTable = function(prisustva) {
                     inner_cell.style.background = "#9CFF2E";
                     boja = "zelena";
                     inner_cell.tip = "predavanja";
+                    inner_cell.index = i;
 
                   } else {
                     inner_cell.style.background = "#E0144C";
                     boja = "crvena";
                     inner_cell.tip = "predavanja";
+                    inner_cell.index = i;
+
                   }
                 } else {
                   if (colorTheTileVjezbe(prisustva.prisustva[i + 30].vjezbe, prisustva, k)) {
                     inner_cell.style.background = "#9CFF2E";
                     boja = "zelena";
                     inner_cell.tip = "vjezbe";
+                    inner_cell.index = i;
+
                   } else {
                     inner_cell.style.background = "#E0144C";
                     boja = "crvena";
                     inner_cell.tip = "vjezbe";
+                    inner_cell.index = i;
+
                   }
                 }
               }
 
               inner_cell.onclick = function() {
-                //console.log(i);
-                predavanja = prisustva.prisustva[i].predavanja;
-                vjezbe = prisustva.prisustva[i].vjezbe;
-
 
                 let celija = document.getElementById(inner_cell.id);
-                //console.log(celija.tip);
 
-                // if (celija.style.background == "rgb(156, 255, 46)") {
-                //   if (celija.tip == "predavanja") {
-                //     predavanja = predavanja - 1;
-                //   } else if (celija.tip == "vjezbe") {
-                //     vjezbe = vjezbe - 1;
-                //   }
-                // } else {
-                //   if (celija.tip == "predavanja") {
-                //     predavanja = predavanja + 1;
-                //   } else if (celija.tip == "vjezbe") {
-                //     vjezbe = vjezbe + 1;
-                //   }
-                // }
+                predavanja = prisustva.prisustva[celija.index+30].predavanja;
+                vjezbe = prisustva.prisustva[celija.index+30].vjezbe;
+                  //console.log(prisustva.prisustva[celija.index]);
+                  //console.log(celija.tip, celija.index, predavanja, vjezbe, j-1,  prisustva.studenti[i].index);
+
+                if (celija.style.background == "rgb(156, 255, 46)") {
+                  if (celija.tip == "predavanja") {
+                    predavanja = predavanja - 1;
+                  } else if (celija.tip == "vjezbe") {
+                    vjezbe = vjezbe - 1;
+                  }
+                } else {
+                  if (celija.tip == "predavanja") {
+                    predavanja = predavanja + 1;
+                  } else if (celija.tip == "vjezbe") {
+                    vjezbe = vjezbe + 1;
+                  }
+                }
                 postPrisustvo(prisustva.predmet, prisustva.studenti[i].index, {
                   sedmica: j - 1,
                   predavanja: predavanja,
